@@ -16,6 +16,7 @@ struct JumpingAnimation: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            .rotationEffect(.degrees(rotate))
             .scaleEffect(scale)
             .offset(y: y)
             .onChange(of: type) { _ in
@@ -31,13 +32,15 @@ struct JumpingAnimation: ViewModifier {
         }
         
         withAnimation(.easeOut(duration: 0.5).delay(0.5)) {
-            y = -40
-            rotate = -15
+            y = -50
+            rotate = -25
+            scale = 0.7
         }
         
         withAnimation(.easeOut(duration: 0.5).delay(1)) {
             y = 0
-            rotate = -0
+            rotate = 0
+            scale = 0.8
         }
         
         withAnimation(.easeOut(duration: 0.5).delay(1.5)) {
